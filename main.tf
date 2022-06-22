@@ -28,3 +28,13 @@ resource "azurerm_kubernetes_cluster" "aks" {
     network_plugin    = "kubenet" 
   }
 }
+
+resource "azurerm_kubernetes_cluster_node_pool" "aksspot" {
+  name                  = "spot"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
+  vm_size               = "Standard_D11"
+  node_count            = 2
+  enable_auto_scaling   = false
+  priority              = "Spot"
+  eviction_policy       = "Delete"
+}
