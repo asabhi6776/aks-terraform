@@ -38,3 +38,11 @@ resource "azurerm_kubernetes_cluster_node_pool" "aksspot" {
   priority              = "Spot"
   eviction_policy       = "Delete"
 }
+resource "azurerm_storage_account" "aks_storage" {
+  name                = "aksstorageacc"
+  resource_group_name = azurerm_resource_group.aks-rg.name
+
+  location                 = azurerm_resource_group.aks-rg.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
