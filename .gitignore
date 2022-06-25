@@ -2,3 +2,4 @@
 *kubeconfig*
 istio*
 *.tfstate*
+.terraform.lock.hcl
