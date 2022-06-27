@@ -3,3 +3,5 @@
 istio*
 *.tfstate*
 .terraform.lock.hcl
+
+templates
