@@ -39,7 +39,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "aksspot" {
   eviction_policy       = "Delete"
 }
 resource "azurerm_storage_account" "aks_storage" {
-  name                = "aksstorageacc"
+  name                = "aksstorageaccfordemo"
   resource_group_name = azurerm_resource_group.aks-rg.name
 
   location                 = azurerm_resource_group.aks-rg.location
