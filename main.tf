@@ -13,7 +13,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   default_node_pool {
     name                = "system"
     node_count          = var.system_node_count
-    vm_size             = "Standard_D11"
+    vm_size             = "standard_e8s_v5"
     type                = "VirtualMachineScaleSets"
     #availability_zones  = [1, 2, 3]
     enable_auto_scaling = false
@@ -32,7 +32,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
 resource "azurerm_kubernetes_cluster_node_pool" "aksspot" {
   name                  = "spot"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
-  vm_size               = "Standard_D11"
+  vm_size               = "standard_e8s_v5"
   node_count            = 2
   enable_auto_scaling   = false
   priority              = "Spot"
