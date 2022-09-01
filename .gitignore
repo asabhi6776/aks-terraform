@@ -5,3 +5,4 @@ istio*
 .terraform.lock.hcl
 
 templates
+demo

@@ -33,7 +33,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "aksspot" {
   name                  = "spot"
   kubernetes_cluster_id = azurerm_kubernetes_cluster.aks.id
   vm_size               = "standard_e8s_v5"
-  node_count            = 2
+  node_count            = 3
   enable_auto_scaling   = false
   priority              = "Spot"
   eviction_policy       = "Delete"
