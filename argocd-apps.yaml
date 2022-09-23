@@ -1,0 +1,2384 @@
+apiVersion: v1
+items:
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-08-31T07:19:00Z"
+    generation: 11176
+    name: app-test-1
+    namespace: argocd
+    resourceVersion: "10340746"
+    uid: 8735a337-319f-43c9-9900-7e000ee29673
+  spec:
+    destination:
+      namespace: app-test-1
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: argo-test
+      repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+      targetRevision: HEAD
+    syncPolicy:
+      automated: {}
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-08-31T07:19:30Z"
+      deployedAt: "2022-08-31T07:19:31Z"
+      id: 0
+      revision: 4133c356b5f427f054d55cdcacfa705d45e23f4f
+      source:
+        path: argo-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-31T07:50:59Z"
+      deployedAt: "2022-08-31T07:50:59Z"
+      id: 1
+      revision: 76579505d983f05b87d32d167d9627b5da5beb0a
+      source:
+        path: argo-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-31T07:55:40Z"
+      deployedAt: "2022-08-31T07:55:40Z"
+      id: 2
+      revision: 86e4634a27046316f03ba227a02452966eeedb1f
+      source:
+        path: argo-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    operationState:
+      finishedAt: "2022-08-31T07:55:40Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 86e4634a27046316f03ba227a02452966eeedb1f
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-08-31T07:55:40Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: Namespace
+          message: namespace/app-test-1 unchanged
+          name: app-test-1
+          namespace: app-test-1
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/app-test-1-svc unchanged
+          name: app-test-1-svc
+          namespace: app-test-1
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/app-test-1-deploy unchanged
+          name: app-test-1-deploy
+          namespace: app-test-1
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.istio.io
+          hookPhase: Running
+          kind: VirtualService
+          message: virtualservice.networking.istio.io/app-test-1 configured
+          name: app-test-1
+          namespace: app-test-1
+          status: Synced
+          syncPhase: Sync
+          version: v1beta1
+        revision: 86e4634a27046316f03ba227a02452966eeedb1f
+        source:
+          path: argo-test
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - kind: Namespace
+      name: app-test-1
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: app-test-1-svc
+      namespace: app-test-1
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        status: Healthy
+      kind: Deployment
+      name: app-test-1-deploy
+      namespace: app-test-1
+      status: Synced
+      version: v1
+    - group: networking.istio.io
+      kind: VirtualService
+      name: app-test-1
+      namespace: app-test-1
+      status: Synced
+      version: v1beta1
+    sourceType: Directory
+    summary:
+      images:
+      - nginx
+    sync:
+      comparedTo:
+        destination:
+          namespace: app-test-1
+          server: https://kubernetes.default.svc
+        source:
+          path: argo-test
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+      revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-21T19:25:53Z"
+    generation: 851
+    name: fluentd
+    namespace: argocd
+    resourceVersion: "10340733"
+    uid: 292e4de2-074f-4acb-86b2-a2641e7f980e
+  spec:
+    destination:
+      namespace: logging-operator
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: fluentd
+      helm:
+        parameters:
+        - name: esSecurity.elasticSearchPassword
+          value: logging-cluster-password
+        - name: elasticSearchPassword
+          value: logging-cluster-password
+      repoURL: https://ot-container-kit.github.io/helm-charts/
+      targetRevision: 0.4.0
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-21T19:26:01Z"
+      deployedAt: "2022-09-21T19:26:01Z"
+      id: 0
+      revision: 0.4.0
+      source:
+        chart: fluentd
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    - deployStartedAt: "2022-09-21T19:32:22Z"
+      deployedAt: "2022-09-21T19:32:22Z"
+      id: 1
+      revision: 0.4.0
+      source:
+        chart: fluentd
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    - deployStartedAt: "2022-09-21T19:36:31Z"
+      deployedAt: "2022-09-21T19:36:32Z"
+      id: 2
+      revision: 0.4.0
+      source:
+        chart: fluentd
+        helm:
+          parameters:
+          - name: esSecurity.elasticSearchPassword
+            value: logging-cluster-password
+          - name: elasticSearchPassword
+            value: logging-cluster-password
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    operationState:
+      finishedAt: "2022-09-21T19:36:32Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 0.4.0
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-21T19:36:31Z"
+      syncResult:
+        resources:
+        - group: logging.logging.opstreelabs.in
+          hookPhase: Running
+          kind: Fluentd
+          message: fluentd.logging.logging.opstreelabs.in/fluentd configured
+          name: fluentd
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1beta1
+        revision: 0.4.0
+        source:
+          chart: fluentd
+          helm:
+            parameters:
+            - name: esSecurity.elasticSearchPassword
+              value: logging-cluster-password
+            - name: elasticSearchPassword
+              value: logging-cluster-password
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - group: logging.logging.opstreelabs.in
+      kind: Fluentd
+      name: fluentd
+      namespace: logging-operator
+      status: Synced
+      version: v1beta1
+    sourceType: Helm
+    summary:
+      images:
+      - fluent/fluentd-kubernetes-daemonset:v1-debian-elasticsearch
+    sync:
+      comparedTo:
+        destination:
+          namespace: logging-operator
+          server: https://kubernetes.default.svc
+        source:
+          chart: fluentd
+          helm:
+            parameters:
+            - name: esSecurity.elasticSearchPassword
+              value: logging-cluster-password
+            - name: elasticSearchPassword
+              value: logging-cluster-password
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+      revision: 0.4.0
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-03T05:57:29Z"
+    generation: 9810
+    name: kafka-cluster
+    namespace: argocd
+    resourceVersion: "10340748"
+    uid: 75d587ee-c780-4ba5-bf0b-a3362910ff91
+  spec:
+    destination:
+      namespace: kafka
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: kafka-strimzi-dep
+      repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+      targetRevision: HEAD
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-03T05:57:39Z"
+      deployedAt: "2022-09-03T05:57:40Z"
+      id: 0
+      revision: 639a198849469cf11c1722f8240d4fd14591bab6
+      source:
+        path: kafka-strimzi-dep
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:04:38Z"
+      deployedAt: "2022-09-03T06:04:39Z"
+      id: 1
+      revision: 31248c9a13a5eabb2e51b541fc46ca94cfb7cf3d
+      source:
+        path: kafka-strimzi-dep
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:11:01Z"
+      deployedAt: "2022-09-03T06:11:04Z"
+      id: 2
+      revision: 6cd71282e0dc46e77efdcb8bb0eb8ab8623e1837
+      source:
+        path: kafka-strimzi-dep
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:13:46Z"
+      deployedAt: "2022-09-03T06:13:46Z"
+      id: 3
+      revision: 6cd71282e0dc46e77efdcb8bb0eb8ab8623e1837
+      source:
+        path: kafka-strimzi-dep
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:21:21Z"
+      deployedAt: "2022-09-03T06:21:22Z"
+      id: 4
+      revision: 6cd71282e0dc46e77efdcb8bb0eb8ab8623e1837
+      source:
+        path: kafka-strimzi-dep
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    operationState:
+      finishedAt: "2022-09-03T06:21:22Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 6cd71282e0dc46e77efdcb8bb0eb8ab8623e1837
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-03T06:21:21Z"
+      syncResult:
+        resources:
+        - group: kafka.strimzi.io
+          hookPhase: Running
+          kind: Kafka
+          message: kafka.kafka.strimzi.io/my-cluster unchanged
+          name: my-cluster
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1beta2
+        revision: 6cd71282e0dc46e77efdcb8bb0eb8ab8623e1837
+        source:
+          path: kafka-strimzi-dep
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - group: kafka.strimzi.io
+      health:
+        status: Healthy
+      kind: Kafka
+      name: my-cluster
+      namespace: kafka
+      status: Synced
+      version: v1beta2
+    sourceType: Directory
+    summary:
+      images:
+      - quay.io/strimzi/kafka:0.28.0-kafka-3.1.0
+      - quay.io/strimzi/operator:0.28.0
+    sync:
+      comparedTo:
+        destination:
+          namespace: kafka
+          server: https://kubernetes.default.svc
+        source:
+          path: kafka-strimzi-dep
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+      revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-03T10:52:01Z"
+    generation: 9668
+    name: kafka-manager
+    namespace: argocd
+    resourceVersion: "10340744"
+    uid: 15a111dd-03aa-450e-9b81-d13e22724062
+  spec:
+    destination:
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: kafka-manager
+      repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+      targetRevision: HEAD
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-03T10:52:38Z"
+      deployedAt: "2022-09-03T10:52:39Z"
+      id: 0
+      revision: f4f1072cb2fd10ff4b881716931705ea83f04f93
+      source:
+        path: kafka-manager
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T10:55:13Z"
+      deployedAt: "2022-09-03T10:55:16Z"
+      id: 1
+      revision: c89839c9eed630584a9bcffe5ebd839d175fa6db
+      source:
+        path: kafka-manager
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    operationState:
+      finishedAt: "2022-09-03T10:55:16Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: c89839c9eed630584a9bcffe5ebd839d175fa6db
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-03T10:55:13Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/kafka-manager configured
+          name: kafka-manager
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/kafka-manager unchanged
+          name: kafka-manager
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.istio.io
+          hookPhase: Running
+          kind: VirtualService
+          message: virtualservice.networking.istio.io/kafka-rule configured
+          name: kafka-rule
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1alpha3
+        revision: c89839c9eed630584a9bcffe5ebd839d175fa6db
+        source:
+          path: kafka-manager
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - health:
+        status: Healthy
+      kind: Service
+      name: kafka-manager
+      namespace: kafka
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        status: Healthy
+      kind: Deployment
+      name: kafka-manager
+      namespace: kafka
+      status: Synced
+      version: v1
+    - group: networking.istio.io
+      kind: VirtualService
+      name: kafka-rule
+      namespace: kafka
+      status: Synced
+      version: v1alpha3
+    sourceType: Directory
+    summary:
+      images:
+      - hlebalbau/kafka-manager:2.0.0.2
+    sync:
+      comparedTo:
+        destination:
+          server: https://kubernetes.default.svc
+        source:
+          path: kafka-manager
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+      revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-04T07:21:25Z"
+    generation: 9300
+    name: keycloak
+    namespace: argocd
+    resourceVersion: "10340737"
+    uid: 362c7c6a-ba3a-404d-8710-0eb97f2ba197
+  spec:
+    destination:
+      namespace: keycloak
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: keycloak
+      repoURL: https://asabhi6776.github.io/keycloak-argocd/
+      targetRevision: 18.3.1
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-04T07:22:04Z"
+      deployedAt: "2022-09-04T07:22:04Z"
+      id: 0
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-06T02:49:19Z"
+      deployedAt: "2022-09-06T02:49:20Z"
+      id: 1
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-07T04:49:14Z"
+      deployedAt: "2022-09-07T04:49:15Z"
+      id: 2
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-08T05:00:47Z"
+      deployedAt: "2022-09-08T05:00:48Z"
+      id: 3
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-08T10:11:02Z"
+      deployedAt: "2022-09-08T10:11:03Z"
+      id: 4
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-09T15:09:11Z"
+      deployedAt: "2022-09-09T15:09:12Z"
+      id: 5
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-11T08:41:17Z"
+      deployedAt: "2022-09-11T08:41:18Z"
+      id: 6
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-13T07:37:55Z"
+      deployedAt: "2022-09-13T07:37:56Z"
+      id: 7
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    - deployStartedAt: "2022-09-17T08:33:21Z"
+      deployedAt: "2022-09-17T08:33:22Z"
+      id: 8
+      revision: 18.3.1
+      source:
+        chart: keycloak
+        repoURL: https://asabhi6776.github.io/keycloak-argocd/
+        targetRevision: 18.3.1
+    operationState:
+      finishedAt: "2022-09-17T08:33:22Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 18.3.1
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-17T08:33:21Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: ServiceAccount
+          message: serviceaccount/keycloak configured
+          name: keycloak
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Secret
+          message: secret/keycloak-postgresql configured
+          name: keycloak-postgresql
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: ConfigMap
+          message: configmap/keycloak-startup unchanged
+          name: keycloak-startup
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/keycloak-postgresql unchanged
+          name: keycloak-postgresql
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/keycloak-headless unchanged
+          name: keycloak-headless
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/keycloak-postgresql-headless unchanged
+          name: keycloak-postgresql-headless
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/keycloak-http unchanged
+          name: keycloak-http
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: StatefulSet
+          message: statefulset.apps/keycloak configured
+          name: keycloak
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: StatefulSet
+          message: statefulset.apps/keycloak-postgresql configured
+          name: keycloak-postgresql
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.istio.io
+          hookPhase: Running
+          kind: VirtualService
+          message: virtualservice.networking.istio.io/keycloak-rule unchanged
+          name: keycloak-rule
+          namespace: keycloak
+          status: Synced
+          syncPhase: Sync
+          version: v1alpha3
+        revision: 18.3.1
+        source:
+          chart: keycloak
+          repoURL: https://asabhi6776.github.io/keycloak-argocd/
+          targetRevision: 18.3.1
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - kind: ConfigMap
+      name: keycloak-startup
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - kind: Secret
+      name: keycloak-postgresql
+      namespace: keycloak
+      status: OutOfSync
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: keycloak-headless
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: keycloak-http
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: keycloak-postgresql
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: keycloak-postgresql-headless
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - kind: ServiceAccount
+      name: keycloak
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        message: statefulset rolling update complete 1 pods at revision keycloak-7ffdbcddcf...
+        status: Healthy
+      kind: StatefulSet
+      name: keycloak
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        message: statefulset rolling update complete 1 pods at revision keycloak-postgresql-97f5f6665...
+        status: Healthy
+      kind: StatefulSet
+      name: keycloak-postgresql
+      namespace: keycloak
+      status: Synced
+      version: v1
+    - group: networking.istio.io
+      kind: VirtualService
+      name: keycloak-rule
+      namespace: keycloak
+      status: Synced
+      version: v1alpha3
+    sourceType: Helm
+    summary:
+      images:
+      - docker.io/bitnami/postgresql:11.14.0-debian-10-r28
+      - docker.io/busybox:1.32
+      - quay.io/keycloak/keycloak:17.0.1-legacy
+    sync:
+      comparedTo:
+        destination:
+          namespace: keycloak
+          server: https://kubernetes.default.svc
+        source:
+          chart: keycloak
+          repoURL: https://asabhi6776.github.io/keycloak-argocd/
+          targetRevision: 18.3.1
+      revision: 18.3.1
+      status: OutOfSync
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-21T19:39:06Z"
+    generation: 850
+    name: kibana
+    namespace: argocd
+    resourceVersion: "10340731"
+    uid: d813c144-4435-4268-b581-f5dd9f632b97
+  spec:
+    destination:
+      namespace: logging-operator
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: kibana
+      helm:
+        parameters:
+        - name: ingress.host
+          value: kibana.bangalore2.com
+        - name: esSecurity.elasticSearchPassword
+          value: logging-cluster-sa-token
+        - name: ingress.tls.secret
+          value: logging-cluster-tls-cert
+      repoURL: https://ot-container-kit.github.io/helm-charts/
+      targetRevision: 0.4.0
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-21T19:39:15Z"
+      deployedAt: "2022-09-21T19:39:16Z"
+      id: 0
+      revision: 0.4.0
+      source:
+        chart: kibana
+        helm:
+          parameters:
+          - name: ingress.host
+            value: kibana.bangalore2.com
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    - deployStartedAt: "2022-09-21T19:44:00Z"
+      deployedAt: "2022-09-21T19:44:00Z"
+      id: 1
+      revision: 0.4.0
+      source:
+        chart: kibana
+        helm:
+          parameters:
+          - name: ingress.host
+            value: kibana.bangalore2.com
+          - name: esSecurity.elasticSearchPassword
+            value: logging-cluster-sa-token
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    - deployStartedAt: "2022-09-21T19:47:59Z"
+      deployedAt: "2022-09-21T19:48:00Z"
+      id: 2
+      revision: 0.4.0
+      source:
+        chart: kibana
+        helm:
+          parameters:
+          - name: ingress.host
+            value: kibana.bangalore2.com
+          - name: esSecurity.elasticSearchPassword
+            value: logging-cluster-sa-token
+          - name: ingress.tls.secret
+            value: logging-cluster-tls-cert
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    operationState:
+      finishedAt: "2022-09-21T19:48:00Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 0.4.0
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-21T19:47:59Z"
+      syncResult:
+        resources:
+        - group: logging.logging.opstreelabs.in
+          hookPhase: Running
+          kind: Kibana
+          message: kibana.logging.logging.opstreelabs.in/kibana unchanged
+          name: kibana
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1beta1
+        revision: 0.4.0
+        source:
+          chart: kibana
+          helm:
+            parameters:
+            - name: ingress.host
+              value: kibana.bangalore2.com
+            - name: esSecurity.elasticSearchPassword
+              value: logging-cluster-sa-token
+            - name: ingress.tls.secret
+              value: logging-cluster-tls-cert
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - group: logging.logging.opstreelabs.in
+      kind: Kibana
+      name: kibana
+      namespace: logging-operator
+      status: Synced
+      version: v1beta1
+    sourceType: Helm
+    summary:
+      images:
+      - docker.elastic.co/kibana/kibana:7.17.0
+    sync:
+      comparedTo:
+        destination:
+          namespace: logging-operator
+          server: https://kubernetes.default.svc
+        source:
+          chart: kibana
+          helm:
+            parameters:
+            - name: ingress.host
+              value: kibana.bangalore2.com
+            - name: esSecurity.elasticSearchPassword
+              value: logging-cluster-sa-token
+            - name: ingress.tls.secret
+              value: logging-cluster-tls-cert
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+      revision: 0.4.0
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-17T08:37:21Z"
+    generation: 2984
+    name: logging
+    namespace: argocd
+    resourceVersion: "10341358"
+    uid: e5605ab4-04fa-415f-a4b3-1aa533d0530c
+  spec:
+    destination:
+      namespace: logging-operator
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: logging-operator
+      repoURL: https://ot-container-kit.github.io/helm-charts/
+      targetRevision: 0.4.0
+  status:
+    health:
+      status: Progressing
+    history:
+    - deployStartedAt: "2022-09-17T08:37:33Z"
+      deployedAt: "2022-09-17T08:37:34Z"
+      id: 0
+      revision: 0.4.0
+      source:
+        chart: logging-operator
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    operationState:
+      finishedAt: "2022-09-17T08:37:34Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 0.4.0
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-17T08:37:33Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: ServiceAccount
+          message: serviceaccount/logging created
+          name: logging
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/indextemplates.logging.logging.opstreelabs.in
+            created
+          name: indextemplates.logging.logging.opstreelabs.in
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/indexlifecycles.logging.logging.opstreelabs.in
+            created
+          name: indexlifecycles.logging.logging.opstreelabs.in
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/fluentds.logging.logging.opstreelabs.in
+            created
+          name: fluentds.logging.logging.opstreelabs.in
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/kibanas.logging.logging.opstreelabs.in
+            created
+          name: kibanas.logging.logging.opstreelabs.in
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/elasticsearches.logging.logging.opstreelabs.in
+            created
+          name: elasticsearches.logging.logging.opstreelabs.in
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: rbac.authorization.k8s.io
+          hookPhase: Running
+          kind: ClusterRole
+          message: "clusterrole.rbac.authorization.k8s.io/logging reconciled. reconciliation
+            required create\n\tmissing rules added:\n\t\t{Verbs:[create delete get
+            list patch update watch] APIGroups:[] Resources:[configmaps events secrets
+            services] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete
+            get list patch update watch] APIGroups:[] Resources:[namespaces pods serviceaccounts]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[apps] Resources:[daemonsets] ResourceNames:[]
+            NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list patch update watch]
+            APIGroups:[apps] Resources:[deployments] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create
+            delete get list patch update watch] APIGroups:[apps] Resources:[statefulsets]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[coordination.k8s.io] Resources:[leases]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[logging.logging.opstreelabs.in] Resources:[elasticsearches]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[update] APIGroups:[logging.logging.opstreelabs.in]
+            Resources:[elasticsearches/finalizers] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[get
+            patch update] APIGroups:[logging.logging.opstreelabs.in] Resources:[elasticsearches/status]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[logging.logging.opstreelabs.in] Resources:[fluentds]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[update] APIGroups:[logging.logging.opstreelabs.in]
+            Resources:[fluentds/finalizers] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[get
+            patch update] APIGroups:[logging.logging.opstreelabs.in] Resources:[fluentds/status]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[logging.logging.opstreelabs.in] Resources:[indexlifecycles]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[update] APIGroups:[logging.logging.opstreelabs.in]
+            Resources:[indexlifecycles/finalizers] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[get
+            patch update] APIGroups:[logging.logging.opstreelabs.in] Resources:[indexlifecycles/status]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[logging.logging.opstreelabs.in] Resources:[indextemplates]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[update] APIGroups:[logging.logging.opstreelabs.in]
+            Resources:[indextemplates/finalizers] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[get
+            patch update] APIGroups:[logging.logging.opstreelabs.in] Resources:[indextemplates/status]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[logging.logging.opstreelabs.in] Resources:[kibanas]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[update] APIGroups:[logging.logging.opstreelabs.in]
+            Resources:[kibanas/finalizers] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[get
+            patch update] APIGroups:[logging.logging.opstreelabs.in] Resources:[kibanas/status]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[rbac.authorization.k8s.io] Resources:[clusterrolebindings
+            clusterroles] ResourceNames:[] NonResourceURLs:[]}. clusterrole.rbac.authorization.k8s.io/logging
+            configured. Warning: resource clusterroles/logging is missing the kubectl.kubernetes.io/last-applied-configuration
+            annotation which is required by  apply.  apply should only be used on
+            resources created declaratively by either  create --save-config or  apply.
+            The missing annotation will be patched automatically."
+          name: logging
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: rbac.authorization.k8s.io
+          hookPhase: Running
+          kind: ClusterRoleBinding
+          message: "clusterrolebinding.rbac.authorization.k8s.io/logging reconciled.
+            reconciliation required create\n\tmissing subjects added:\n\t\t{Kind:ServiceAccount
+            APIGroup: Name:logging-operator Namespace:logging-operator}. clusterrolebinding.rbac.authorization.k8s.io/logging
+            configured. Warning: resource clusterrolebindings/logging is missing the
+            kubectl.kubernetes.io/last-applied-configuration annotation which is required
+            by  apply.  apply should only be used on resources created declaratively
+            by either  create --save-config or  apply. The missing annotation will
+            be patched automatically."
+          name: logging
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/logging created
+          name: logging
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/logging created
+          name: logging
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        revision: 0.4.0
+        source:
+          chart: logging-operator
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - health:
+        status: Healthy
+      kind: Service
+      name: logging
+      namespace: logging-operator
+      status: Synced
+      version: v1
+    - kind: ServiceAccount
+      name: logging
+      namespace: logging-operator
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: elasticsearches.logging.logging.opstreelabs.in
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: fluentds.logging.logging.opstreelabs.in
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: indexlifecycles.logging.logging.opstreelabs.in
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: indextemplates.logging.logging.opstreelabs.in
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kibanas.logging.logging.opstreelabs.in
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        message: 'Waiting for rollout to finish: 0 of 1 updated replicas are available...'
+        status: Progressing
+      kind: Deployment
+      name: logging
+      namespace: logging-operator
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: logging
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      name: logging
+      status: Synced
+      version: v1
+    sourceType: Helm
+    summary:
+      images:
+      - quay.io/opstree/logging-operator:v0.4.0
+    sync:
+      comparedTo:
+        destination:
+          namespace: logging-operator
+          server: https://kubernetes.default.svc
+        source:
+          chart: logging-operator
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+      revision: 0.4.0
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-21T19:23:12Z"
+    generation: 838
+    name: logging-cluster
+    namespace: argocd
+    resourceVersion: "10340730"
+    uid: ea8e2000-deb5-4550-9a63-dbd163718c21
+  spec:
+    destination:
+      namespace: logging-operator
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: elasticsearch
+      repoURL: https://ot-container-kit.github.io/helm-charts/
+      targetRevision: 0.4.0
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-21T19:23:21Z"
+      deployedAt: "2022-09-21T19:23:22Z"
+      id: 0
+      revision: 0.4.0
+      source:
+        chart: elasticsearch
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.4.0
+    operationState:
+      finishedAt: "2022-09-21T19:23:22Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 0.4.0
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-21T19:23:21Z"
+      syncResult:
+        resources:
+        - group: logging.logging.opstreelabs.in
+          hookPhase: Running
+          kind: Elasticsearch
+          message: elasticsearch.logging.logging.opstreelabs.in/logging-cluster created
+          name: logging-cluster
+          namespace: logging-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1beta1
+        revision: 0.4.0
+        source:
+          chart: elasticsearch
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - group: logging.logging.opstreelabs.in
+      kind: Elasticsearch
+      name: logging-cluster
+      namespace: logging-operator
+      status: Synced
+      version: v1beta1
+    sourceType: Helm
+    summary:
+      images:
+      - docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    sync:
+      comparedTo:
+        destination:
+          namespace: logging-operator
+          server: https://kubernetes.default.svc
+        source:
+          chart: elasticsearch
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.4.0
+      revision: 0.4.0
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-08-31T10:58:19Z"
+    generation: 11151
+    name: portainer
+    namespace: argocd
+    resourceVersion: "10340736"
+    uid: 7ad9d63a-a2dd-4e98-8883-ffef9d18c9b5
+  spec:
+    destination:
+      namespace: portainer
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: portainer
+      repoURL: https://asabhi6776.github.io/portainer-argocd/
+      targetRevision: 1.0.34
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-08-31T10:59:41Z"
+      deployedAt: "2022-08-31T10:59:41Z"
+      id: 0
+      revision: 1.0.33
+      source:
+        chart: portainer
+        repoURL: https://asabhi6776.github.io/portainer-argocd/
+        targetRevision: 1.0.33
+    - deployStartedAt: "2022-08-31T11:28:21Z"
+      deployedAt: "2022-08-31T11:28:22Z"
+      id: 1
+      revision: 1.0.33
+      source:
+        chart: portainer
+        repoURL: https://asabhi6776.github.io/portainer-argocd/
+        targetRevision: 1.0.33
+    - deployStartedAt: "2022-08-31T11:31:05Z"
+      deployedAt: "2022-08-31T11:31:06Z"
+      id: 2
+      revision: 1.0.34
+      source:
+        chart: portainer
+        repoURL: https://asabhi6776.github.io/portainer-argocd/
+        targetRevision: 1.0.33
+    - deployStartedAt: "2022-08-31T11:31:14Z"
+      deployedAt: "2022-08-31T11:31:14Z"
+      id: 3
+      revision: 1.0.34
+      source:
+        chart: portainer
+        repoURL: https://asabhi6776.github.io/portainer-argocd/
+        targetRevision: 1.0.33
+    - deployStartedAt: "2022-08-31T11:31:21Z"
+      deployedAt: "2022-08-31T11:31:21Z"
+      id: 4
+      revision: 1.0.33
+      source:
+        chart: portainer
+        repoURL: https://asabhi6776.github.io/portainer-argocd/
+        targetRevision: 1.0.33
+    - deployStartedAt: "2022-08-31T11:31:41Z"
+      deployedAt: "2022-08-31T11:31:41Z"
+      id: 5
+      revision: 1.0.34
+      source:
+        chart: portainer
+        repoURL: https://asabhi6776.github.io/portainer-argocd/
+        targetRevision: 1.0.33
+    operationState:
+      finishedAt: "2022-08-31T11:31:41Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 1.0.34
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-08-31T11:31:41Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: ServiceAccount
+          message: serviceaccount/portainer-sa-clusteradmin configured
+          name: portainer-sa-clusteradmin
+          namespace: portainer
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: PersistentVolumeClaim
+          message: persistentvolumeclaim/portainer configured
+          name: portainer
+          namespace: portainer
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: rbac.authorization.k8s.io
+          hookPhase: Running
+          kind: ClusterRoleBinding
+          message: clusterrolebinding.rbac.authorization.k8s.io/portainer reconciled.
+            clusterrolebinding.rbac.authorization.k8s.io/portainer configured
+          name: portainer
+          namespace: portainer
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/portainer configured
+          name: portainer
+          namespace: portainer
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/portainer configured
+          name: portainer
+          namespace: portainer
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.istio.io
+          hookPhase: Running
+          kind: VirtualService
+          message: virtualservice.networking.istio.io/portainer configured
+          name: portainer
+          namespace: portainer
+          status: Synced
+          syncPhase: Sync
+          version: v1alpha3
+        revision: 1.0.34
+        source:
+          chart: portainer
+          repoURL: https://asabhi6776.github.io/portainer-argocd/
+          targetRevision: 1.0.33
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - health:
+        status: Healthy
+      kind: PersistentVolumeClaim
+      name: portainer
+      namespace: portainer
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: portainer
+      namespace: portainer
+      status: Synced
+      version: v1
+    - kind: ServiceAccount
+      name: portainer-sa-clusteradmin
+      namespace: portainer
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        status: Healthy
+      kind: Deployment
+      name: portainer
+      namespace: portainer
+      status: Synced
+      version: v1
+    - group: networking.istio.io
+      kind: VirtualService
+      name: portainer
+      namespace: portainer
+      status: Synced
+      version: v1alpha3
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      name: portainer
+      status: Synced
+      version: v1
+    sourceType: Helm
+    summary:
+      images:
+      - portainer/portainer-ce:2.14.2
+    sync:
+      comparedTo:
+        destination:
+          namespace: portainer
+          server: https://kubernetes.default.svc
+        source:
+          chart: portainer
+          repoURL: https://asabhi6776.github.io/portainer-argocd/
+          targetRevision: 1.0.34
+      revision: 1.0.34
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-08-31T10:16:08Z"
+    generation: 11145
+    name: profile
+    namespace: argocd
+    resourceVersion: "10340745"
+    uid: 8095f2e1-bc8d-44ba-833e-0af8cb2ca580
+  spec:
+    destination:
+      namespace: myprofile
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: new-test
+      repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+      targetRevision: HEAD
+    syncPolicy:
+      automated: {}
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-08-31T10:16:11Z"
+      deployedAt: "2022-08-31T10:16:11Z"
+      id: 0
+      revision: 2c948f653348b9763e911b8eda12ede6fd07c394
+      source:
+        path: new-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-08-31T10:18:47Z"
+      deployedAt: "2022-08-31T10:18:47Z"
+      id: 1
+      revision: 29d7969d045f4bbb6ea63921538961f65c55b95b
+      source:
+        path: new-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-01T06:28:33Z"
+      deployedAt: "2022-09-01T06:28:53Z"
+      id: 2
+      revision: e9c4bb7daaf6730ce6894b8b75c5a90bd384a5de
+      source:
+        path: new-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T05:09:41Z"
+      deployedAt: "2022-09-03T05:10:01Z"
+      id: 3
+      revision: d41f3943720f603e366c77242756d58c7d97d629
+      source:
+        path: new-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T05:10:49Z"
+      deployedAt: "2022-09-03T05:10:49Z"
+      id: 4
+      revision: d41f3943720f603e366c77242756d58c7d97d629
+      source:
+        path: new-test
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    operationState:
+      finishedAt: "2022-09-03T05:10:49Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: d41f3943720f603e366c77242756d58c7d97d629
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-03T05:10:49Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: Namespace
+          message: namespace/myprofile unchanged
+          name: myprofile
+          namespace: myprofile
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/myprofile unchanged
+          name: myprofile
+          namespace: myprofile
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/myprofile unchanged
+          name: myprofile
+          namespace: myprofile
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: networking.istio.io
+          hookPhase: Running
+          kind: VirtualService
+          message: virtualservice.networking.istio.io/myprofile unchanged
+          name: myprofile
+          namespace: myprofile
+          status: Synced
+          syncPhase: Sync
+          version: v1beta1
+        revision: d41f3943720f603e366c77242756d58c7d97d629
+        source:
+          path: new-test
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - kind: Namespace
+      name: myprofile
+      status: Synced
+      version: v1
+    - health:
+        status: Healthy
+      kind: Service
+      name: myprofile
+      namespace: myprofile
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        status: Healthy
+      kind: Deployment
+      name: myprofile
+      namespace: myprofile
+      status: Synced
+      version: v1
+    - group: networking.istio.io
+      kind: VirtualService
+      name: myprofile
+      namespace: myprofile
+      status: Synced
+      version: v1beta1
+    sourceType: Directory
+    summary:
+      images:
+      - asabhi6776/my-profile:2.1
+    sync:
+      comparedTo:
+        destination:
+          namespace: myprofile
+          server: https://kubernetes.default.svc
+        source:
+          path: new-test
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+      revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-11T16:38:55Z"
+    generation: 5710
+    name: rc-demo
+    namespace: argocd
+    resourceVersion: "10340747"
+    uid: 4b31dd28-9489-4bda-bc54-088880aa6654
+  spec:
+    destination:
+      namespace: test-rc
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: rc-demo
+      repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+      targetRevision: HEAD
+    syncPolicy:
+      automated: {}
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-11T16:40:39Z"
+      deployedAt: "2022-09-11T16:40:39Z"
+      id: 0
+      revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      source:
+        path: rc-demo
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    operationState:
+      finishedAt: "2022-09-11T16:40:40Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          automated: true
+        retry:
+          limit: 5
+        sync:
+          revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      phase: Succeeded
+      startedAt: "2022-09-11T16:40:39Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: ReplicationController
+          message: replicationcontroller/myapp-rc created
+          name: myapp-rc
+          namespace: test-rc
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        revision: fc861a5d9b82267b537666393a0f8388c3800c61
+        source:
+          path: rc-demo
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - kind: ReplicationController
+      name: myapp-rc
+      namespace: test-rc
+      status: Synced
+      version: v1
+    sourceType: Directory
+    summary:
+      images:
+      - nginx
+    sync:
+      comparedTo:
+        destination:
+          namespace: test-rc
+          server: https://kubernetes.default.svc
+        source:
+          path: rc-demo
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+      revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-13T17:05:37Z"
+    generation: 4737
+    name: redis
+    namespace: argocd
+    resourceVersion: "10341391"
+    uid: 5d3652e3-2f52-4780-9b85-0a24e5f0224b
+  spec:
+    destination:
+      namespace: redis-operator
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: redis-operator
+      repoURL: https://ot-container-kit.github.io/helm-charts/
+      targetRevision: 0.11.2
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-13T17:08:21Z"
+      deployedAt: "2022-09-13T17:08:21Z"
+      id: 0
+      revision: 0.11.2
+      source:
+        chart: redis-operator
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.11.2
+    operationState:
+      finishedAt: "2022-09-13T17:08:22Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 0.11.2
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-13T17:08:21Z"
+      syncResult:
+        resources:
+        - group: ""
+          hookPhase: Running
+          kind: ServiceAccount
+          message: serviceaccount/redis-operator created
+          name: redis-operator
+          namespace: redis-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/redis.redis.redis.opstreelabs.in
+            created
+          name: redis.redis.redis.opstreelabs.in
+          namespace: redis-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/redisclusters.redis.redis.opstreelabs.in
+            created
+          name: redisclusters.redis.redis.opstreelabs.in
+          namespace: redis-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: rbac.authorization.k8s.io
+          hookPhase: Running
+          kind: ClusterRole
+          message: "clusterrole.rbac.authorization.k8s.io/redis-operator reconciled.
+            reconciliation required create\n\tmissing rules added:\n\t\t{Verbs:[create
+            delete get list patch update watch] APIGroups:[redis.redis.opstreelabs.in]
+            Resources:[rediss redisclusters redis rediscluster] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[update]
+            APIGroups:[redis.redis.opstreelabs.in] Resources:[redis/finalizers rediscluster/finalizers]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[get patch update] APIGroups:[redis.redis.opstreelabs.in]
+            Resources:[redis/status rediscluster/status] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create
+            delete get list patch update watch] APIGroups:[] Resources:[secrets pods/exec
+            pods services configmaps events persistentvolumeclaims] ResourceNames:[]
+            NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list patch update watch]
+            APIGroups:[apps] Resources:[statefulsets] ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create
+            delete get list patch update watch] APIGroups:[coordination.k8s.io] Resources:[leases]
+            ResourceNames:[] NonResourceURLs:[]}\n\t\t{Verbs:[create delete get list
+            patch update watch] APIGroups:[policy] Resources:[poddisruptionbudgets]
+            ResourceNames:[] NonResourceURLs:[]}. clusterrole.rbac.authorization.k8s.io/redis-operator
+            configured. Warning: resource clusterroles/redis-operator is missing the
+            kubectl.kubernetes.io/last-applied-configuration annotation which is required
+            by  apply.  apply should only be used on resources created declaratively
+            by either  create --save-config or  apply. The missing annotation will
+            be patched automatically."
+          name: redis-operator
+          namespace: redis-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: rbac.authorization.k8s.io
+          hookPhase: Running
+          kind: ClusterRoleBinding
+          message: "clusterrolebinding.rbac.authorization.k8s.io/redis-operator reconciled.
+            reconciliation required create\n\tmissing subjects added:\n\t\t{Kind:ServiceAccount
+            APIGroup: Name:redis-operator Namespace:redis-operator}. clusterrolebinding.rbac.authorization.k8s.io/redis-operator
+            configured. Warning: resource clusterrolebindings/redis-operator is missing
+            the kubectl.kubernetes.io/last-applied-configuration annotation which
+            is required by  apply.  apply should only be used on resources created
+            declaratively by either  create --save-config or  apply. The missing annotation
+            will be patched automatically."
+          name: redis-operator
+          namespace: redis-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/redis-operator created
+          name: redis-operator
+          namespace: redis-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        revision: 0.11.2
+        source:
+          chart: redis-operator
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.11.2
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - kind: ServiceAccount
+      name: redis-operator
+      namespace: redis-operator
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: redis.redis.redis.opstreelabs.in
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: redisclusters.redis.redis.opstreelabs.in
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        status: Healthy
+      kind: Deployment
+      name: redis-operator
+      namespace: redis-operator
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: redis-operator
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      name: redis-operator
+      status: Synced
+      version: v1
+    sourceType: Helm
+    summary:
+      images:
+      - quay.io/opstree/redis-operator:v0.11.0
+    sync:
+      comparedTo:
+        destination:
+          namespace: redis-operator
+          server: https://kubernetes.default.svc
+        source:
+          chart: redis-operator
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.11.2
+      revision: 0.11.2
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-14T12:06:27Z"
+    generation: 4342
+    name: redis-cluster
+    namespace: argocd
+    resourceVersion: "10340732"
+    uid: 1b02b90b-c8de-4178-8f60-31be4545ea84
+  spec:
+    destination:
+      namespace: redis-operator
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: redis-cluster
+      repoURL: https://ot-container-kit.github.io/helm-charts/
+      targetRevision: 0.11.3
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-14T12:06:36Z"
+      deployedAt: "2022-09-14T12:06:37Z"
+      id: 0
+      revision: 0.11.3
+      source:
+        chart: redis-cluster
+        repoURL: https://ot-container-kit.github.io/helm-charts/
+        targetRevision: 0.11.3
+    operationState:
+      finishedAt: "2022-09-14T12:06:37Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 0.11.3
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-14T12:06:36Z"
+      syncResult:
+        resources:
+        - group: redis.redis.opstreelabs.in
+          hookPhase: Running
+          kind: RedisCluster
+          message: rediscluster.redis.redis.opstreelabs.in/redis-cluster created
+          name: redis-cluster
+          namespace: redis-operator
+          status: Synced
+          syncPhase: Sync
+          version: v1beta1
+        revision: 0.11.3
+        source:
+          chart: redis-cluster
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.11.3
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - group: redis.redis.opstreelabs.in
+      kind: RedisCluster
+      name: redis-cluster
+      namespace: redis-operator
+      status: Synced
+      version: v1beta1
+    sourceType: Helm
+    summary:
+      images:
+      - quay.io/opstree/redis-exporter:1.0
+      - quay.io/opstree/redis:v6.2.5
+    sync:
+      comparedTo:
+        destination:
+          namespace: redis-operator
+          server: https://kubernetes.default.svc
+        source:
+          chart: redis-cluster
+          repoURL: https://ot-container-kit.github.io/helm-charts/
+          targetRevision: 0.11.3
+      revision: 0.11.3
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{},"name":"strimzi","namespace":"argocd"},"spec":{"destination":{"namespace":"kafka","server":"https://kubernetes.default.svc"},"project":"default","source":{"chart":"strimzi-kafka-operator","repoURL":"https://strimzi.io/charts/","targetRevision":"0.28.0"},"syncPolicy":{"automated":{"prune":true,"selfHeal":true},"syncOptions":["CreateNamespace=true"]}}}
+    creationTimestamp: "2022-09-03T05:23:33Z"
+    generation: 9818
+    name: strimzi
+    namespace: argocd
+    resourceVersion: "10340742"
+    uid: 9fac85a5-9fea-4d4d-af20-78fe122f5cfb
+  spec:
+    destination:
+      namespace: kafka
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      chart: strimzi-kafka-operator
+      repoURL: https://strimzi.io/charts/
+      targetRevision: 0.28.0
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+      - CreateNamespace=true
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-03T05:23:33Z"
+      deployedAt: "2022-09-03T05:23:38Z"
+      id: 0
+      revision: 0.28.0
+      source:
+        chart: strimzi-kafka-operator
+        repoURL: https://strimzi.io/charts/
+        targetRevision: 0.28.0
+    operationState:
+      finishedAt: "2022-09-03T05:23:45Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          automated: true
+        retry:
+          limit: 5
+        sync:
+          prune: true
+          resources:
+          - group: apiextensions.k8s.io
+            kind: CustomResourceDefinition
+            name: kafkas.kafka.strimzi.io
+          revision: 0.28.0
+          syncOptions:
+          - CreateNamespace=true
+      phase: Succeeded
+      startedAt: "2022-09-03T05:23:43Z"
+      syncResult:
+        resources:
+        - group: apiextensions.k8s.io
+          hookPhase: Running
+          kind: CustomResourceDefinition
+          message: customresourcedefinition.apiextensions.k8s.io/kafkas.kafka.strimzi.io
+            unchanged
+          name: kafkas.kafka.strimzi.io
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        revision: 0.28.0
+        source:
+          chart: strimzi-kafka-operator
+          repoURL: https://strimzi.io/charts/
+          targetRevision: 0.28.0
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - kind: ConfigMap
+      name: strimzi-cluster-operator
+      namespace: kafka
+      status: Synced
+      version: v1
+    - kind: ServiceAccount
+      name: strimzi-cluster-operator
+      namespace: kafka
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkabridges.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkaconnectors.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkaconnects.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkamirrormaker2s.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkamirrormakers.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkarebalances.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkas.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkatopics.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: kafkausers.kafka.strimzi.io
+      status: Synced
+      version: v1
+    - group: apiextensions.k8s.io
+      kind: CustomResourceDefinition
+      name: strimzipodsets.core.strimzi.io
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        status: Healthy
+      kind: Deployment
+      name: strimzi-cluster-operator
+      namespace: kafka
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: strimzi-cluster-operator-global
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: strimzi-cluster-operator-namespaced
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: strimzi-entity-operator
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: strimzi-kafka-broker
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: strimzi-kafka-client
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      name: strimzi-cluster-operator
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      name: strimzi-cluster-operator-kafka-broker-delegation
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      name: strimzi-cluster-operator-kafka-client-delegation
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      name: strimzi-cluster-operator
+      namespace: kafka
+      status: Synced
+      version: v1
+    - group: rbac.authorization.k8s.io
+      kind: RoleBinding
+      name: strimzi-cluster-operator-entity-operator-delegation
+      namespace: kafka
+      status: Synced
+      version: v1
+    sourceType: Helm
+    summary:
+      images:
+      - quay.io/strimzi/operator:0.28.0
+    sync:
+      comparedTo:
+        destination:
+          namespace: kafka
+          server: https://kubernetes.default.svc
+        source:
+          chart: strimzi-kafka-operator
+          repoURL: https://strimzi.io/charts/
+          targetRevision: 0.28.0
+      revision: 0.28.0
+      status: Synced
+- apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    creationTimestamp: "2022-09-03T06:32:52Z"
+    generation: 9802
+    name: zoo-entrance
+    namespace: argocd
+    resourceVersion: "10340750"
+    uid: 6390fc72-b35f-403c-af33-ad49182afbb7
+  spec:
+    destination:
+      namespace: kafka
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: zoo-entrance
+      repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+      targetRevision: HEAD
+    syncPolicy: {}
+  status:
+    health:
+      status: Healthy
+    history:
+    - deployStartedAt: "2022-09-03T06:33:48Z"
+      deployedAt: "2022-09-03T06:33:49Z"
+      id: 0
+      revision: 10918f38da79343c5927acb53605508188adca39
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:38:43Z"
+      deployedAt: "2022-09-03T06:38:46Z"
+      id: 1
+      revision: 6fc26ad6dde4694bef5378f75ab554879a270a16
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:39:38Z"
+      deployedAt: "2022-09-03T06:39:38Z"
+      id: 2
+      revision: 6fc26ad6dde4694bef5378f75ab554879a270a16
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:44:01Z"
+      deployedAt: "2022-09-03T06:44:04Z"
+      id: 3
+      revision: 713259ffa87dc0e257e55b28cf014f24cac7b551
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T06:52:07Z"
+      deployedAt: "2022-09-03T06:52:07Z"
+      id: 4
+      revision: 713259ffa87dc0e257e55b28cf014f24cac7b551
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T10:09:18Z"
+      deployedAt: "2022-09-03T10:09:19Z"
+      id: 5
+      revision: 0f45d5b5575af1227bb50222240e159e98b5efa2
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T10:38:06Z"
+      deployedAt: "2022-09-03T10:38:07Z"
+      id: 6
+      revision: 537afe4020080ad7975b09a98aa661a8f30d9212
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    - deployStartedAt: "2022-09-03T10:47:48Z"
+      deployedAt: "2022-09-03T10:47:48Z"
+      id: 7
+      revision: 1a4da4fe52a788265501f81b8dbcc3d95c043513
+      source:
+        path: zoo-entrance
+        repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+        targetRevision: HEAD
+    operationState:
+      finishedAt: "2022-09-03T10:47:48Z"
+      message: successfully synced (all tasks run)
+      operation:
+        initiatedBy:
+          username: admin
+        retry: {}
+        sync:
+          revision: 1a4da4fe52a788265501f81b8dbcc3d95c043513
+          syncStrategy:
+            hook: {}
+      phase: Succeeded
+      startedAt: "2022-09-03T10:47:48Z"
+      syncResult:
+        resources:
+        - group: networking.k8s.io
+          hookPhase: Running
+          kind: NetworkPolicy
+          message: networkpolicy.networking.k8s.io/zoo-entrance configured
+          name: zoo-entrance
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: ""
+          hookPhase: Running
+          kind: Service
+          message: service/zoo-entrance unchanged
+          name: zoo-entrance
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        - group: apps
+          hookPhase: Running
+          kind: Deployment
+          message: deployment.apps/zoo-entrance configured
+          name: zoo-entrance
+          namespace: kafka
+          status: Synced
+          syncPhase: Sync
+          version: v1
+        revision: 1a4da4fe52a788265501f81b8dbcc3d95c043513
+        source:
+          path: zoo-entrance
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+    reconciledAt: "2022-09-23T12:52:08Z"
+    resources:
+    - health:
+        status: Healthy
+      kind: Service
+      name: zoo-entrance
+      namespace: kafka
+      status: Synced
+      version: v1
+    - group: apps
+      health:
+        status: Healthy
+      kind: Deployment
+      name: zoo-entrance
+      namespace: kafka
+      status: Synced
+      version: v1
+    - group: networking.k8s.io
+      kind: NetworkPolicy
+      name: zoo-entrance
+      namespace: kafka
+      status: Synced
+      version: v1
+    sourceType: Directory
+    summary:
+      images:
+      - ghcr.io/scholzj/zoo-entrance:latest
+    sync:
+      comparedTo:
+        destination:
+          namespace: kafka
+          server: https://kubernetes.default.svc
+        source:
+          path: zoo-entrance
+          repoURL: https://gitlab.com/as_abhi6776/k8s-study.git
+          targetRevision: HEAD
+      revision: fc861a5d9b82267b537666393a0f8388c3800c61
+      status: Synced
+kind: List
+metadata:
+  resourceVersion: ""
